@@ -8,6 +8,8 @@ Read at your own risk! ;)
 
 This project uses [cryptobib](https://cryptobib.di.ens.fr/).
 
+Hence, run `git submodule update --init --recursive` after cloning the repo.
+
 ## Compiling the paper
 
 ```bash
