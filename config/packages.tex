@@ -1,0 +1,67 @@
+%!Tex root = ../compliance.tex
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+
+\let\spvec\vec
+\let\vec\accentvec
+\newcommand\hmmax{0}
+\newcommand\bmmax{0}
+\DeclareFontFamily{U}{mathx}{\hyphenchar\font45}
+\DeclareFontShape{U}{mathx}{m}{n}{<-> mathx10}{}
+\DeclareSymbolFont{mathx}{U}{mathx}{m}{n}
+\DeclareMathAccent{\widebar}{0}{mathx}{"73}
+
+\let\spvec\vec
+\usepackage{amssymb,amsmath}
+\let\vec\spvec
+%\usepackage{newtxmath,newtxtext}
+\usepackage{newtxtext}
+
+\usepackage[T1]{fontenc}
+\def\vec#1{\mathchoice{\mbox{\boldmath$\displaystyle#1$}}
+{\mbox{\boldmath$\textstyle#1$}} {\mbox{\boldmath$\scriptstyle#1$}}
+{\mbox{\boldmath$\scriptscriptstyle#1$}}}
+%\usepackage{amsthm} % Theorem package to access a few math utils and QED symbols
+\usepackage[normalem]{ulem}
+\usepackage[color=yellow!20]{todonotes}
+\usepackage{soul}
+\usepackage[linktoc=all]{hyperref}
+\setcounter{tocdepth}{3} % defines how detailed is ToC
+\setcounter{secnumdepth}{3} %defines how deeply sections are numerated
+\usepackage{paralist}
+\usepackage{mathrsfs}
+\usepackage{listings}
+\usepackage{lscape} % To turn page in landscape mode
+\usepackage{dashbox} % Enables to have dashed boxes
+\newcommand\dboxed[1]{\dbox{\ensuremath{#1}}}
+\usepackage{dirtytalk} % for quotation
+\usepackage{booktabs}
+\usepackage{pifont}
+% See: https://tex.stackexchange.com/questions/2291/how-do-i-change-the-enumerate-list-format-to-use-letters-instead-of-the-defaul
+%\usepackage{enumitem} % For enumerates with letters instead of bullets
+%\newcommand{\subscript}[2]{$#1 _ #2$} % Command to work with enumitem
+
+%\usepackage[paperheight=23.5cm,paperwidth=15.5cm,text={12.2cm,19.3cm},centering]{geometry}
+%\usepackage[paperheight=23.5cm,paperwidth=16.5cm,text={14.2cm,19.3cm},centering]{geometry}
+\usepackage[margin=0.8in,a4paper]{geometry}
+%\usepackage{fullpage}
+\usepackage[framemethod=TikZ,innerleftmargin=5pt,innerrightmargin=5pt]{mdframed}
+\usepackage[listings,skins,breakable]{tcolorbox}
+\usepackage{bm}
+\usepackage[capitalise]{cleveref}
+\usepackage[mathscr]{euscript}
+\usepackage[all]{nowidow}
+
+\usepackage{sectsty}
+\allsectionsfont{\normalfont\sffamily\bfseries}
+
+%\usepackage{fourier}
+\usepackage[T1]{fontenc}
+
+\usepackage[advantage,asymptotics,adversary,complexity,sets,keys,ff,notions,
+lambda,primitives,events,operators,probability,logic,mm,
+landau]{cryptocode}

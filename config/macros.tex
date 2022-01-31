@@ -1,0 +1,527 @@
+\mathchardef\mhyphen="2D
+
+
+\newcommand{\newm}[1]{{\textcolor{red}{#1}}}
+%%%%% General commands %%%%%
+\newcommand{\variable}[1]{\mathsf{#1}}
+\newcommand{\constant}[1]{\mathtt{#1}}
+\renewcommand{\comment}[1]{}
+%%%%% Complexity classes %%%%%
+\renewcommand{\pccomplexitystyle}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\IP}{\pccomplexitystyle{IP}}
+\newcommand{\PSPACE}{\pccomplexitystyle{PSPACE}}
+
+%%%%% Projects %%%%%
+\newcommand{\project}[1]{\ensuremath{\mathtt{#1}}}
+\newcommand{\zeth}{\project{ZETH}}
+\newcommand{\zecale}{\project{Zecale}}
+\newcommand{\zexe}{\project{ZEXE}}
+\newcommand{\ethereum}{\project{Ethereum}}
+\newcommand{\coda}{\project{Coda}}
+\newcommand{\nym}{\project{Nym}}
+\newcommand{\tor}{\project{TOR}}
+\newcommand{\loopix}{\project{Loopix}}
+\newcommand{\dizk}{\project{DIZK}}
+\newcommand{\libsnark}{\project{libsnark}}
+\newcommand{\libff}{\project{libff}}
+
+%%%% Predicates
+\newcommand{\zecaleP}{\algostyle{ZecaleP}} % Zecale Predicate
+\newcommand{\appP}{\algostyle{BaseAppP}} % BaseApp Predicate
+\newcommand{\predicate}{\algostyle{P}} % general predicate
+
+%%%%% Assets %%%%%
+\newcommand{\asset}[1]{\mathtt{#1}}
+\newcommand{\ether}{\asset{Ether}}
+
+% %%%%% Party %%%%%
+% \newcommand{\party}[1]{\mathit{#1}}
+% %\newcommand{\prover}{\ensuremath{\party{P}}\xspace}
+% %\newcommand{\verifier}{\ensuremath{\party{V}}\xspace}
+% \newcommand{\miner}{\ensuremath{\party{Miner}}\xspace}
+% \newcommand{\challenger}{\party{C}}
+
+%%%%% General crypto commands %%%%%
+%\let\vec\bm%
+\newcommand{\smallset}[1] {\{#1\}}
+\newcommand{\fset}[1] {\left\{ #1 \right\}}
+\newcommand{\params}{\variable{pp}} % public parameters
+\newcommand{\keyspace}{\funspace{K}}
+
+\newcommand{\family}[1]{\mathcal{#1}}
+
+\newcommand{\ENC}{\pcalgostyle{E}} %encryption scheme
+
+\newcommand{\nuppt}{\pcmachinemodelstyle{NUPPT}} % Non-Uniform PPT
+
+%%%%% Ethereum accounts %%%%%
+\newcommand{\accountstyle}[1]{\mathbf{#1}}
+%% Smart-contracts accounts
+\newcommand{\contractstyle}[1]{\widetilde{\accountstyle{#1}}}
+\newcommand{\baseAppContract}{\ensuremath{\contractstyle{baseAppC}}}
+\newcommand{\modifiedBaseAppContract}{\ensuremath{\contractstyle{ZbaseAppC}}}
+\newcommand{\ZecaleContract}{\ensuremath{\contractstyle{ZecaleC}}}
+
+%%%% Variables %%%%
+%\newcommand{\ledger}{\mathscr{L}}
+
+%%%% Zecale commands %%%%%
+\newcommand{\zktx}{\variable{zktx}} % transaction containing a SNARK
+\newcommand{\aggrtx}{\variable{aggrtx}} % Aggregation tx containing the wrapping SNARK
+\newcommand{\inputs}{\variable{inputs}} % Application inputs (e.g. Zeth inputs)
+
+\newcommand{\execAppLogic}{\algostyle{ExecAppLogic}} % Application logic (eg. Zeth state transition logic) executed if the SNARK verifies correctly
+%
+\newcommand{\zkAppCRS}{\variable{\crs_{app}}} % CRS of the base application (e.g. Zeth)
+\newcommand{\zkOtherAppCRS}{\variable{\crs_{\widetilde{app}}}}
+\newcommand{\zethCRS}{\variable{\crs_{zeth}}} % CRS of Zeth
+\newcommand{\zecaleCRS}{\variable{\crs_{zec}}}
+\newcommand{\zecaleRelation}{\algostyle{ZecaleRelation}}
+%
+\newcommand{\zkpZecale}{\variable{\pi_{zec}}}
+\newcommand{\zkpBaseApp}{\variable{\pi_{app}}}
+\newcommand{\zkpBaseOtherApp}{\variable{\pi_{\widetilde{app}}}}
+%
+\newcommand{\inpZecale}{\variable{\inp_{zec}}}
+\newcommand{\inpBaseApp}{\variable{\inp_{app}}}
+\newcommand{\inpBaseOtherApp}{\variable{\inp_{\widetilde{app}}}}
+%
+\newcommand{\ledgerZecale}{\ledger_{zec}}
+\newcommand{\ledgerApp}{\ledger_{app}}
+%
+\newcommand{\snarkZecale}{\algostyle{\snark_{zec}}}
+\newcommand{\snarkApp}{\algostyle{\snark_{app}}}
+\newcommand{\snarkOtherApp}{\algostyle{\snark_{\widetilde{app}}}}
+%
+\newcommand{\appContractAddress}{\variable{baseAppAddr}}
+\newcommand{\ZappContractAddress}{\variable{ZbaseAppAddr}}
+\newcommand{\zecaleContractAddress}{\variable{zecaleAddr}}
+\newcommand{\dispatchData}{\variable{dispatchData}}
+\newcommand{\dispatch}{\algostyle{dispatch}}
+\newcommand{\createContractInstance}{\algostyle{createContractInstance}}
+%
+\newcommand{\gasSaved}{\variable{gSaved}}
+%
+\newcommand{\snarkBatch}{\algostyle{VBATCH}} % Verify batch - equation
+% SNARK verifier equation
+\newcommand{\verifierEq}{\algostyle{\verifier_{eq}}}
+
+%% Commands used in protocols and procedures
+\newcommand{\inpH}{\variable{h}}
+\newcommand{\inpPacked}{\variable{xH}}
+\newcommand{\inpValidity}{\variable{xValid}}
+\newcommand{\processAggregatedTx}{\algostyle{processAggrTx}}
+\newcommand{\processTx}{\algostyle{processTx}}
+\newcommand{\constructor}{\algostyle{constructor}}
+% Map representing the storage memory of the contract
+\newcommand{\storage}{\variable{storage}}
+%
+\newcommand{\vkHash}{\variable{vkHash}}
+%
+\newcommand{\broadcastMsg}{\algostyle{broadcastMsg}}
+\newcommand{\encodeToBytes}{\algostyle{encodeToBytes}}
+\newcommand{\byteData}{\variable{byteData}}
+% Message sender solidity util
+\newcommand{\msgSender}{\variable{msgSender}}
+%
+\newcommand{\decodeBytes}{\algostyle{decodeBytes}}
+\newcommand{\decodedData}{\variable{decodedData}}
+%
+\newcommand{\fieldAppCRS}{\variable{``app\_crs"}}
+\newcommand{\fieldZecaleAddr}{\variable{``zecale\_addr"}}
+%
+\newcommand{\toDigest}{\algostyle{toDigest}}
+\newcommand{\toField}{\algostyle{toField}}
+%
+\newcommand{\rNested}{\variable{r_n}}
+\newcommand{\rWrapping}{\variable{r_w}}
+
+
+%%%%% Constants %%%%%
+\newcommand{\batchSize}{\constant{BATCH\_SIZE}} % Size of the aggregation batch
+\newcommand{\gasPrice}{\constant{gPrice}} % Gas price on Ethereum
+\newcommand{\blockReward}{\constant{BLOCK\_REWARD}} % Block reward
+\newcommand{\aggrReward}{\constant{AGGREGATION\_REWARD}} % Aggregation reward
+\newcommand{\blockGasLimit}{\constant{BLOCK\_GAS\_LIMIT}} % Block gas limit
+\newcommand{\aggrTxGas}{\constant{AggrTxGas}} % Gas required to pay to settle an aggregation transaction on-chain
+\newcommand{\aggrTxCost}{\constant{AggrTxCost}} % Cost of settling an aggregation tx on-chain = gas * gasPrice
+\newcommand{\appTxGas}{\constant{AppTxGas}} % Gas required to pay to settle an app transaction on-chain
+\newcommand{\appTxCost}{\constant{AppTxCost}} % Cost of settling an app tx on-chain = gas * gasPrice
+\newcommand{\verifProofGas}{\constant{VProofGas}} % Gas required to verify a SNARK on-chain
+\newcommand{\verifNProofGas}{\constant{VNProofGas}} % Gas to verify Nested proof
+\newcommand{\verifWProofGas}{\constant{VWProofGas}} % Gas to verify Wrapping proof
+\newcommand{\verifProofCost}{\constant{VProofCost}} % Cost required to verify a SNARK on-chain
+\newcommand{\txDefaultGas}{\constant{DGAS}}
+
+%%%%% Cryptographic experiments %%%%%
+\newcommand{\game}[1]{\pcalgostyle{#1}}
+\newcommand{\ngame}[2]{\pcalgostyle{Game_{#1}^{#2}}}
+\newcommand{\parcase}[1]{\noindent\textit{{#1}.}}
+\newcommand{\aggrInd}{\game{AGGR\mhyphen IND}} % Aggregation IND game
+\newcommand{\zclSND}{\game{ZCL\mhyphen SND}} % Soundness game
+\newcommand{\collRes}{\game{coll\mhyphen res}} % Collision res
+\newcommand{\snarkSND}{\game{SNARK\mhyphen SND}} % SNARK SDN game
+
+%%%%% Curves %%%%%
+\newcommand{\curve}[1]{\mathsf{#1}}
+\newcommand{\BNCurve}{\curve{BN\mhyphen{}254}}
+\newcommand{\BLSZcash}{\curve{BLS12\mhyphen{}381}}
+\newcommand{\BLSZexe}{\curve{BLS12\mhyphen{}377}}
+\newcommand{\BWSix}{\curve{BW6\mhyphen{}761}}
+\newcommand{\CPcurve}{\curve{CP}}
+% May need to distinguish between MNT{4,6}-298 and MNT{4,6}-763, see how it goes, and if I use both
+\newcommand{\MNTFour}{\curve{MNT4}}
+\newcommand{\MNTSix}{\curve{MNT6}}
+
+%%%%% Algorithms/Schemes %%%%%
+\newcommand{\algostyle}[1]{\pcalgostyle{#1}}
+\newcommand{\oracle}[1]{\algostyle{O}^{#1}} % Oracle
+\newcommand{\produceBlock}{\algostyle{ProdBlock}}
+\newcommand{\setup}{\algostyle{Setup}}
+\newcommand{\includeTxInBlock}{\algostyle{IncludeTxInBlock}}
+% Zeth commands
+\newcommand{\mix}{\algostyle{Mix}}
+\DeclareMathOperator\shr{shr}% shift right
+\DeclareMathOperator\IM{Im}
+
+%%%%% SNARKs notations %%%%%
+\newcommand{\snark}{\algostyle{\Psi}}
+\newcommand{\LAN}{\mathbf{L}}
+\newcommand{\LANZECALE}{\LAN^{\project{zec}}}
+\newcommand{\pcrelstyle}[1]{\mathbf{#1}}
+\newcommand{\REL}{\pcrelstyle{R}}
+\newcommand{\LANG}{\pcrelstyle{L}}
+\newcommand{\RELZECALE}{\REL^{\project{zec}}}
+\newcommand{\RELGEN}{\mathcal{R}}
+\newcommand{\RELCIRC}{\REL^{\project{z}}}
+\newcommand{\transcript}{\mathsf{Transcript}}
+%
+\newcommand{\groth}{\algostyle{Groth16}}
+\newcommand{\zkproof}{\variable{\pi}} % a zk proof
+\newcommand{\zkproofsim}{{\zkproof_{\simulator}}}
+\newcommand{\piA}{\variable{A}} % A element of the proof
+\newcommand{\piB}{\variable{B}} % B element of the proof
+\newcommand{\piC}{\variable{C}} % C element of the proof
+\newcommand{\polU}{\variable{u}} % Polynomial U
+\newcommand{\polV}{\variable{v}} % Polynomial V
+\newcommand{\polW}{\variable{w}} % Polynomial W
+\newcommand{\vkABC}{\variable{vkABC}} % Set of ABC ratio elements in the VK
+\newcommand{\crs}{\variable{crs}} % common reference string
+\newcommand{\master}{\variable{mstr}}
+\newcommand{\specialized}{\variable{spec}}
+\newcommand{\crsmaster}{\crs^{\master}}
+\newcommand{\crsspec}{\crs^{\specialized}}
+\newcommand{\srs}{\variable{srs}} % structured reference string
+\newcommand{\srss}{\variable{srs}^{\specialized}}
+\newcommand{\kgens}{\pcalgostyle{KGenSpec}}
+\newcommand{\td}{\variable{td}} % trapdoor for srs
+\newcommand{\inp}{\variable{x}} % input
+\newcommand{\wit}{\variable{w}} % witness
+\newcommand{\proofsystem}{\pcalgostyle{PS}}
+
+
+%%%%% Math/Algebra notations %%%%%%
+\newcommand{\paramGen}{\mathcal{G}}
+\newcommand{\suchthat}{\text{s.t.}} % Helper for "such that"
+\newcommand{\GRP}{\mathbb{G}} % Groupb
+\newcommand{\gelement}[2]{\left[#1 \right]_{#2}}
+\newcommand{\gone}[1]{\gelement{#1}{1}}
+\newcommand{\gtwo}[1]{\gelement{#1}{2}}
+\newcommand{\gtar}[1]{\gelement{#1}{T}}
+\newcommand{\gnone}[1]{\gelement{#1}{}}
+\newcommand{\GRPord}{r} % Group order
+\newcommand{\Id}{\mathcal{O}} % Point at infinity. Notation for the identity element of our groups
+\newcommand{\pair}{e} % Pairing
+%\newcommand{\pair}[2]{e(#1, #2)} % Pairing
+\newcommand{\grpelement}[1]{\mathfrak{#1}}
+\newcommand{\ggenerator}{\grpelement{g}} % Generator g
+\newcommand{\hgenerator}{\grpelement{h}} % Generator h
+\newcommand{\isEq}{\stackrel{?}{=}}
+\newcommand*{\QED}{\hfill\ensuremath{\square}} % QED symbol
+\newcommand{\cardinality}[1]{|#1|}
+%/
+\newcommand{\vectorspace}[1]{\mathcal{#1}} % Notation for vector space
+\newcommand{\lintransform}[1]{\mathcal{#1}} % Notation for linear transformation
+% Operator for the Kernel of the linear transformation
+\DeclareMathOperator{\Ker}{Ker}
+\newcommand{\grp}[1]{\mathfrak{#1}}
+
+\newcommand{\eps}{\varepsilon}
+
+%%general cryptography
+\newcommand{\fail}{\event{fail}}
+
+%DGKOS-specific notation
+\newcommand{\AL}{\variable{AL}}
+\newcommand{\al}{\AL}
+\newcommand{\pAL}{\variable{pAL}}
+\newcommand{\sAL}{\variable{sAL}}
+%\newcommand{\al}{al}
+\newcommand{\flag}[1]{\variable{#1}}
+\newcommand{\ready}{\flag{ready}}
+\newcommand{\valid}{\flag{valid}}
+\newcommand{\dataset}[1]{\variable{#1}}
+\newcommand{\aci}{\dataset{ACI}}
+\newcommand{\ipiu}{\dataset{IPIU}}
+\newcommand{\uc}{\dataset{UC}}
+\newcommand{\data}{\dataset{Data}}
+\newcommand{\txdata}{\dataset{TxData}}
+\newcommand{\buffer}{\variable{buffer}}
+
+\newcommand{\name}{\ensuremath{\pcalgostyle{NAME}}}
+\newcommand{\pistis}{\ensuremath{\pcalgostyle{Pistis}}}
+\newcommand{\PPCTS}{\ensuremath{\pcalgostyle{PPCTS}}}
+
+
+%%%% Missing general crypto %%%%%%
+\newcommand{\range}[2]{[#1 .. #2]}
+\newcommand{\ro}{\mathcal{H}} %random oracle
+\newcommand{\hashf}{\mathsf{H}} % hash function
+\newcommand{\rand}[1]{\mathsf{Rnd}(#1)}
+\newcommand{\func}[1]{\mathbf{F}_{{#1}}}
+\newcommand{\prot}[1]{\mathbf{P}_{#1}}
+\renewcommand{\st}[1]{\uppercase{\texttt{#1}}}
+\newcommand{\listvar}[1]{{\variable{list}_{#1}}}
+\newcommand{\length}[1]{\pcalgostyle{len}(#1)}
+
+\newcommand{\tprf}{\tilde{\prf}}
+\newcommand{\prepsign}{\pcalgostyle{PrepSign}}
+\newcommand{\blindsign}{\pcalgostyle{BlindSign}}
+%%
+
+\newcommand{\sgen}{\pcalgostyle{SGen}}
+\newcommand{\ggen}{\pcalgostyle{GGen}}
+\newcommand{\msg}[1]{\mathtt{#1}}
+
+%%%%% Roles %%%%%
+%\renewcommand{\pcadvstyle}[1]{\pcalgostyle{#1}}
+\newcommand{\role}[1]{\pcalgostyle{#1}}
+\newcommand{\user}{\role{U}}
+\newcommand{\noofu}{{\variable{\MakeLowercase{\user}}}}
+\newcommand{\reg}{\role{R}}
+\newcommand{\owner}{\role{O}}
+\newcommand{\account}{\role{T}}
+\newcommand{\identity}{\role{I}}
+\newcommand{\party}{\role{P}}
+\newcommand{\partyid}[1]{#1.\pcvarstyle{id}}
+\newcommand{\partyset}[1]{\mathrm{#1}}
+\newcommand{\noofpolas}{\variable{\MakeLowercase{\polas}}}
+\newcommand{\pid}{\variable{pid}}
+\newcommand{\sid}{\variable{sid}}
+\newcommand{\polas}{\role{PA}}
+%\newcommand{\noofpolas}{\variable{\MakeLowercase{\polas}}}
+\newcommand{\idprov}{\role{I}}
+\newcommand{\noofidprov}{\variable{\MakeLowercase{\idprov}}}
+\newcommand{\relay}{\role{R}}
+\newcommand{\noofr}{\variable{\MakeLowercase{\relay}}}
+
+\newcommand{\pccom}[1]{{\footnotesize{/\hspace*{-2pt}/ #1}}}
+
+%%%%% For compliance %%%%%%
+\newcommand{\prfkey}{ \pcvarstyle{k}}
+\newcommand{\policydig} {\pcvarstyle{dig}_{comp}}
+\newcommand{\alpolicydig} {\pcvarstyle{dig}_{al}}
+\newcommand{\keyal}{\key_{al}}
+
+\newcommand{\tx}{\variable{tx}} %transaction
+\newcommand{\comp}{\variable{comp}} %index for compliance variables
+
+%%%% For compliance relation graph
+\newcommand{\pcvarstyle}[1]{\mathsf{#1}} %for variables
+\newcommand{\proc}[1]{\mathsf{#1}} % for procedures
+
+\newcommand{\cred}{\variable{cred}}
+\newcommand{\pcred}{\variable{pcred}}
+\newcommand{\scred}{\variable{scred}}
+
+%%% threshold encryption and anonymity revokers
+\newcommand{\ar}{\role{AR}}%{\role{A\hspace*{-0.1em}R}} %anonymity revokers
+\newcommand{\thresholdar}{\pcvarstyle{t}}
+\newcommand{\noofar}{\pcvarstyle{\MakeLowercase{\ar}}}
+\newcommand{\ciphertext}{\pcvarstyle{c}}
+\newcommand{\ckey}{\ciphertext_{key}}
+\newcommand{\cuser}{\ciphertext_{pcred}}
+\newcommand{\cid}{\ciphertext_{id}}
+\newcommand{\cpol}{\ciphertext_{pol}}
+
+%for CL encryption scheme
+\newcommand{\solve}{\pcalgostyle{Solve}}
+\newcommand{\GGG}{\mathbb{G}}
+\newcommand{\HHH}{\mathbb{H}}
+\newcommand{\hGGG}{\hat{\GGG}}
+
+\newcommand{\combine}{\pcalgostyle{Comb}}
+\newcommand{\TENC}{\pcalgostyle{TE}}
+\newcommand{\BSIG}{\pcalgostyle{BS}}
+%\newcommand{\blindsign}{\pcalgostyle{BlindSign}}
+\newcommand{\unblind}{\pcalgostyle{Unblind}}
+\newcommand{\threshold}{\pcvarstyle{t}}
+\newcommand{\noofparties}{\pcvarstyle{\MakeLowercase{\party}}}
+\newcommand{\varshare}{\pcvarstyle{s}}
+\newcommand{\simpart}{\pcalgostyle{SimPart}}
+
+\renewcommand{\SS}{\pcalgostyle{SS}}
+\newcommand{\share}{\pcalgostyle{Share}}
+\newcommand{\reconstruct}{\pcalgostyle{Reconstruct}}
+
+\newcommand{\app}{\mathbf{A}}
+\newcommand{\maxacc}{\variable{maxAccounts}}
+\newcommand{\maxtime}{\variable{time}}
+\newcommand{\cnt}{\variable{Count}}
+\newcommand{\generateAccount}{\pcalgostyle{generateAccount}}
+
+\newcommand{\RELpol}{\REL_{pol}}
+\newcommand{\RELacc}{\REL_{acc}}
+\newcommand{\RELval}{\REL_{val}}
+\newcommand{\RELcomp}{\REL_{comp}}
+
+\newcommand{\funcidis}{\func{idis}}
+\newcommand{\funccompis}{\func{comp\mhyphen is}}
+
+\newcommand{\proofsystemc}{{\proofsystem_\texttt{comp}}} % proof system for compliance
+\newcommand{\proofc}{{\zkproof_{\texttt{comp}}}} %proof of compliance
+\newcommand{\proofacc}{\zkproof_{\texttt{acc}}}
+\newcommand{\zkproofsk}{\zkproof_{\sk}}
+
+% modules
+\newcommand{\module}[1]{\mathscr{#1}}
+\newcommand{\transmodule}{\module{T}}
+\newcommand{\identitymodule}{\module{I}}
+\newcommand{\compliancemodule}{\module{C}}
+\newcommand{\ledgermodule}{\module{L}}
+\newcommand{\ledger}{\ledgermodule}
+\newcommand{\regulator}{\module{R}}
+
+\newcommand{\aux}{\pcvarstyle{aux}}
+\newcommand{\saux}{\pcvarstyle{saux}}
+\newcommand{\paux}{\pcvarstyle{paux}}
+\newcommand{\auxid}{\aux_{id}}
+\newcommand{\auxpol}{\aux_{pol}}
+\newcommand{\auxacc}{\aux_{acc}}
+\newcommand{\pkacc}{\pk_{acc}}
+\newcommand{\skacc}{\sk_{acc}}
+\newcommand{\auxtx}{\aux_{tx}}
+\newcommand{\sauxtx}{\saux_{tx}}
+\newcommand{\pauxtx}{\paux_{tx}}
+
+\newcommand{\idis}{id\mhyphen is}
+
+\newcommand{\pcpolicystyle}[1]{\mathbf{#1}}
+\newcommand{\comppolicy}{\pcpolicystyle{P}_{comp}} % compliance policy
+\newcommand{\alpolicy}{\pcpolicystyle{P}_{al}} %predicate which user has to follow to get policy
+\newcommand{\valpolicy}{\pcpolicystyle{V}} % transaction validity policy
+\newcommand{\revpolicy}{\pcpolicystyle{R}} % policy that determines which user's actions lead to its identity revelation
+\newcommand{\rec}[1]{\pckeystyle{#1}}
+\newcommand{\recpolicy}{\rec{policy}}
+\newcommand{\recpolicydig}{\rec{policyDigest}}
+
+\newcommand{\prooff}{\psi_\texttt{fraud}} % proof of fraud
+
+\newcommand{\prep}{\pcvarstyle{p}}
+\newcommand{\prepcomp}{{{\proofsystemc.\prep}}}
+
+\newcommand{\desc}[1]{\noindent\underbar{#1:}}
+
+%%% signature
+\newcommand{\signaturescheme}{\pcalgostyle{S}}
+\newcommand{\SIG}{\signaturescheme}
+\newcommand{\signature}{\sigma}
+%\newcommand{\pcoraclestyle}[1]{\mathsf{#1}}
+\newcommand{\oracleo}{\pcoraclestyle{O}}
+
+\newcommand{\accept}{\pcvarstyle{accept}}
+
+\renewcommand{\prover}{\pcalgostyle{Pro}}
+\renewcommand{\verifier}{\pcalgostyle{Ver}}
+
+%%%% messages send to the ideal functionalities
+\newcommand{\done}{\msg{done}}
+\newcommand{\issuePolicy}{\msg{issuePolicy}}
+\newcommand{\issuedPolicy}{\msg{issuedPolicy}}
+\newcommand{\policyIssued}{\msg{policyIssued}}
+\newcommand{\attributesValid}{\msg{attributesValid}}
+\newcommand{\attributesNotValid}{\msg{attributesNotValid}}
+\newcommand{\attributesNotVerified}{\msg{attributesNotVerified}}
+\newcommand{\checkAttributes}{\msg{checkAttributes}}
+\newcommand{\createAccount}{\msg{createAccount}}
+\newcommand{\sendTransaction}{\msg{sendTransaction}}
+\newcommand{\transactionSent}{\msg{transactionSent}}
+\newcommand{\createAccountShielded}{\msg{createAccountShielded}}
+\newcommand{\sendTransactionShielded}{\msg{sendTransactionShielded}}
+\newcommand{\shieldedTransactionSent}{\msg{shieldedTransactionSent}}
+%\newcommand{\ok}{\msg{ok}}
+\newcommand{\notOk}{\msg{notOk}}
+\newcommand{\issueIdentity}{\msg{issueIdentity}}
+\newcommand{\issuedIdentity}{\msg{issuedIdentity}}
+\newcommand{\identityIssued}{\msg{identityIssued}}
+\newcommand{\retrieve}{\msg{retrieve}}
+\newcommand{\policyAssigned}{\msg{policyAssigned}}
+\newcommand{\policyNotAssigned}{\msg{policyNotAssigned}}
+\newcommand{\accountCreated}{\msg{accountCreated}}
+\newcommand{\accountCreatedShielded}{\msg{accountCreatedShielded}}
+\newcommand{\proveStatement}{\msg{proveStatement}}
+\newcommand{\verifyProof}{\msg{verifyProof}}
+\newcommand{\statementProven}{\msg{statementProven}}
+\newcommand{\statementVerified}{\msg{statementVerified}}
+\newcommand{\giveWitness}{\msg{giveWitness}}
+\newcommand{\append}{\msg{append}}
+\newcommand{\initialize}{\msg{initialize}}
+\newcommand{\initialized}{\msg{initialized}}
+\newcommand{\register}{\msg{register}}
+\newcommand{\revokeAccount}{\msg{revokeAccount}}
+\newcommand{\accountRevoked}{\msg{accountRevoked}}
+\newcommand{\traceAccounts}{\msg{traceAccounts}}
+\newcommand{\compute}{\msg{compute}}
+\newcommand{\allowed}{\msg{allowed}}
+\newcommand{\notAllowed}{\msg{notAllowed}}
+\newcommand{\setupStart}{\msg{setupStart}}
+\newcommand{\setupReady}{\msg{setupReady}}
+\newcommand{\send}{\msg{send}}
+\newcommand{\sent}{\msg{sent}}
+\newcommand{\relayApproved}{\msg{relayApproved}}
+\newcommand{\releaseTransactionBuffer}{\msg{releaseTransactionBuffer}}
+\newcommand{\sendTransactionBegins}{\msg{sendTransactionBegins}}
+\newcommand{\sendTransactionShieldedBegins}{\msg{sendTransactionShieldedBegins}}
+\newcommand{\allowTransaction}{\msg{allowTransaction}}
+\newcommand{\trace}{\msg{trace}}
+\newcommand{\generateMasterSRS}{\msg{generateMasterSRS}}
+\newcommand{\generateSpecializedSRS}{\msg{generateSpecializedSRS}}
+\newcommand{\generateKeys}{\msg{generateKeys}}
+\newcommand{\generatePP}{\msg{generatePP}}
+\newcommand{\releaseAccountBuffer}{\msg{releaseAccountBuffer}}
+\newcommand{\releaseTransBuffer}{\msg{releaseTransBuffer}}
+\newcommand{\idProvInitialized}{\msg{idProvInitialized}}
+\newcommand{\partyInitialized}{\msg{partyInitialized}}
+\newcommand{\sendAnonymously}{\msg{sendAnonymously}}
+\newcommand{\sentAnonymously}{\msg{sentAnonymously}}
+\newcommand{\return}{\msg{return}}
+\newcommand{\returned}{\msg{returned}}
+
+%%%%% Comments %%%%%
+\definecolor{bananamania}{rgb}{0.98,0.91,0.71}
+\definecolor{darkred}{rgb}{0.7,0,0}
+\definecolor{blueish}{rgb}{0.1,0.1,0.5}
+\definecolor{pinkish}{rgb}{0.9,0.8,0.8}
+
+\definecolor{redone}{HTML}{ffe5e0}
+\definecolor{yellowone}{HTML}{fffcf2}
+\definecolor{pinkone}{HTML}{fff2f2}
+\definecolor{blueone}{HTML}{f2f9fd}
+
+\DeclareRobustCommand{\antoines}[2]{{\color{darkred}\sethlcolor{bananamania}\hl{\textbf{Antoine #1:} #2}}}
+
+\DeclareRobustCommand{\michals}[2]{{\color{magenta}$\Big[$\textbf{Michal #1:} #2$\Big]$}}
+
+\DeclareRobustCommand{\mxout}[1]{{\color{magenta} \xout{#1}}}
+\DeclareRobustCommand{\changedm}[1] {{\color{magenta} #1}}
+
+%tcolorboxes
+\newtcolorbox{protbox}[1]{left skip=-1cm,colback=blueone,coltext=black,coltitle=black,colbacktitle=blueone,width=19cm,fonttitle=\bfseries,
+breakable, enhanced, attach boxed title to top center={yshift=-2mm},title=#1}
+\newtcolorbox{funcbox}[1]{left skip=-1cm,width=19cm,colback=pinkone,coltext=black,coltitle=black,colbacktitle=pinkone,fonttitle=\bfseries,
+breakable, enhanced, attach boxed title to top center={yshift=-2mm},title=#1}
+\newtcolorbox{simbox}[1]{left skip=-1cm,width=19cm,colback=yellowone,coltext=black,coltitle=black,colbacktitle=yellowone,fonttitle=\bfseries,
+breakable, enhanced, attach boxed title to top center={yshift=-2mm},title=#1}
+
+% Text background
+\newcommand{\private}[1]{\colorbox{lightgray}{#1}}

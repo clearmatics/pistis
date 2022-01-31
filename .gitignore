@@ -1,0 +1,25 @@
+# Latex files
+
+*.tex.bak
+*.tex.orig
+*.aux
+*.toc
+*.bbl
+*.blg
+*.log
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.out
+*.ilg
+*.nlo
+*.nls
+*.upa
+*.upb
+*.fls
+*.fdb_latexmk
+*.xwm
